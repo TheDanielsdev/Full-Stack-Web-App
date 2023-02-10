@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const blogRoute = require('./route/blogRoute')
 const Blog = require('./models/blogschema');
 
 const app = express();
@@ -36,33 +37,6 @@ app.get('/', (req, res) => {
  })
 });
 
-app.get('/blogs', (req, res) => {
-    res.render('create_blog');
-})
 
 
-app.post('/blogs', (req, res) => {
-    const postBlog = new Blog(req.body);
-    postBlog.save()
-    .then((result) => {
-        res.redirect('/');
-    })
-    .catch((err) => {
-        console.log(err)
-    })
-}); 
-
-
-app.get('/blogs/:id', (req, res) => {
-  const id = req.params.id;
-  Blog.findById(id)
-  .then((result) => {
-    res.render('details', {result})
-  })
-  .catch((err) => {
-    
-    console.log(err);
-  })
-
-})
-
+app.use( blogRoute );
