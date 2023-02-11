@@ -36,18 +36,18 @@ router.get('/blogs/:id', (req, res) => {
 });
 
 
-router.delete('/blogs/:id', (req, res) => {
-    const id = req.params.id;
-    Blog.findByIdAndDelete(id)
-    .then((result) => {
-      res.redirect('/')
-    })
-    .catch((err) => {
+// router.delete('/blogs/:id', (req, res) => {
+//     const id = req.params.id;
+//     Blog.findByIdAndDelete(id)
+//     .then((result) => {
+//       res.redirect('/')
+//     })
+//     .catch((err) => {
       
-      console.log(err);
-    })
+//       console.log(err);
+//     })
   
-  });
+//   });
 
 
 module.exports = router;
